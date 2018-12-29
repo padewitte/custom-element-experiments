@@ -1,6 +1,5 @@
 const path = require('path');
 const NgCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
@@ -20,7 +19,6 @@ module.exports = {
       tsConfigPath: './tsconfig.json',
       mainPath: './src/index.ts'
     }),
-    new UglifyJsPlugin(),
     new CompressionPlugin()
   ],
   mode: 'production',

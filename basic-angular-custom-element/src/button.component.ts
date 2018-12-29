@@ -3,12 +3,13 @@ import {
   Component,
   ViewEncapsulation,
   EventEmitter,
-  Output
+  Output,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 
 @Component({
   selector: 'custom-button',
-  template: `<button (click)="handleClick()">{{label}}</button>`,
+  template: `<div><input [(ngModel)]="msg" /><b>{{msg}}</b><button (click)="handleClick()">{{label}} - You clicked me {{this.clicksCt}} time(s).</button></div>`,
   styles: [
     `
     button {
@@ -19,15 +20,17 @@ import {
     }
   `
   ],
-  encapsulation: ViewEncapsulation.Native
+  encapsulation: ViewEncapsulation.Native,
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class ButtonComponent {
-  @Input() label = 'default label';
+  msg = 'defautl message';
+  label = 'I am an Angular webcomponent';
   @Output() action = new EventEmitter<number>();
-  private clicksCt = 0;
-
+  clicksCt : number = 0;
+  
   handleClick() {
-    this.clicksCt++;
+    this.clicksCt = this.clicksCt + 1;
     this.action.emit(this.clicksCt);
   }
 }
