@@ -1,0 +1,14 @@
+{
+  "name": "basic-custom-elements",
+  "version": "0.0.1",
+  "description": "A basic set of custom elements written with popular web frameworks",
+  "devDependencies": {
+    "http-server": "*"
+  },
+  "scripts": {
+    "serve": "http-server --gzip"
+  },
+  "keywords": [],
+  "author": "Pierre-Alban DEWITTE - padewitte@gmail.com",
+  "license": "ISC"
+}
