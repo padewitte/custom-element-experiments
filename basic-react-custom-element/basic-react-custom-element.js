@@ -8,9 +8,9 @@ class BasicReactCustomElement extends HTMLElement {
     const mountPoint = document.createElement('span');
     this.attachShadow({ mode: 'open' }).appendChild(mountPoint);
 
-    const name = this.getAttribute('name');
+    const name = 'my name';
     const url = 'https://www.google.com/search?q=' + encodeURIComponent(name);
-    ReactDOM.render('<a href={url}>{name}</a>', mountPoint);
+    return ReactDOM.render(React.createElement('a', {href : url}, `I am a React element ${name}`), mountPoint);
   }
 }
 customElements.define('basic-react-custom-element', BasicReactCustomElement);
