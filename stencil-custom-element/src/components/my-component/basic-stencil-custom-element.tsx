@@ -2,8 +2,8 @@ import { Component, Prop } from '@stencil/core';
 import { format } from '../../utils/utils';
 
 @Component({
-  tag: 'my-component',
-  styleUrl: 'my-component.css',
+  tag: 'basic-stencil-custom-element',
+  styleUrl: 'basic-stencil-custom-element.css',
   shadow: true
 })
 export class MyComponent {
@@ -27,6 +27,6 @@ export class MyComponent {
   }
 
   render() {
-    return <div>Hello, World! I'm {this.getText()}</div>;
+    return <div>I am a Stencil custom elements {this.getText()}</div>;
   }
 }

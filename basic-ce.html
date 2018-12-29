@@ -3,11 +3,22 @@
     
   </head>
   <body>
-    <script src="https://rawgit.com/padewitte/9ce76de27ddd825b0e0bce249300acb7/raw/28f7548b4409877fe9458b8f59891a6f57f712fe/script.js"></script>
+      <script src="./angular-custom-element/dist/main.js"></script>
+      <script type="module" src="./lit-custom-element/basic-lit-custom-element.js"></script>
+      <script type="module" src="./react-custom-element/basic-react-custom-element.js"></script>
+      <script type="module" src="./skatejs-custom-element/basic-skatejs-custom-element.js"></script>
+      <script src="./stencil-custom-element/dist/stencil-custom-element.js"></script>
+      <script src="./vanilla-custom-element/basic-vanilla-custom-element.js"></script>
+      <script type="module" src="./vuejs-custom-element/basic-vuejs-custom-element.js"></script>
 <div>
   <h2>Working custom elements</h2>
-    <p>VanillaJS : <basic-vanilla-custom-element></basic-vanilla-custom-element></p>
-
+    <p><custom-button label="First Value"></custom-button></p>
+    <p><basic-lit-custom-element></basic-lit-custom-element></p>
+    <p><basic-react-custom-element></basic-react-custom-element></p>
+    <p><basic-skatejs-custom-element></basic-skatejs-custom-element></p>
+    <p><basic-stencil-custom-element first="Stencil" last="'Don't call me a framework' JS"></basic-stencil-custom-element></p>
+    <p><basic-vanilla-custom-element></basic-vanilla-custom-element></p>
+    <p><basic-vuejs-custom-element></basic-vuejs-custom-element></p>
 </div>
     
   </body>
