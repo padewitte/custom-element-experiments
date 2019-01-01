@@ -65,51 +65,7 @@ customElements.define('heart-button', class extends HTMLElement {
 
     this.shadow.innerHTML = `
     <style>
-    :host {
-      /* --heart-color: black; */
-      display: inline-flex;
-      vertical-align: middle;
-    }
-    .heartButton {
-      position: relative;
-      min-height: 2rem;
-      min-width: 2rem;
-      border: none;
-      background: none;
-      fill: var(--heart-color);
-      transition-property: filter;
-      transition-duration: 0.5s;
-      --heart-scale : 1;
-    }
-
-    .heartButton:hover {
-      filter: brightness(70%);
-      --heart-scale : 1.3;
-    }
-    
-    .heartSVG{
-      padding-top: 2px;
-      transition-property: transform;
-      transition-duration: 0.5s;
-      transform: scale(var( --heart-scale));
-    }
-    
-    .heartCount{
-      display: flex;
-      position: absolute;
-      bottom: 0;
-      right: -0.5rem;
-      font-size: 75%;
-      color: var(--heart-color);
-      background-color: #ffffffa1;
-      height: 1.2rem;
-      width: 1.2rem;
-      text-align: center;
-      border-radius: 0.2rem;
-      align-items: center;
-      justify-content: center;
-    }
-    
+    @import '/vanilla-custom-element/heart-button.css';
     </style>
     <span class="heartButton">${heartSVG}${this.state.val ? "<span class='heartCount'>" + this.val  + "</span>" : ""} </span>`;
     this.shadow.querySelector('.heartButton').addEventListener('click', () => {
