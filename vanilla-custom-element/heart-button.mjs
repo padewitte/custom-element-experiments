@@ -12,39 +12,56 @@ customElements.define('heart-button', class extends HTMLElement {
     console.log(`${name} attribute changed - attributeChangedCallback called`, newValue);
     switch (name) {
       case 'val':
-        if (this._val !== newValue) {
-          this._val = parseInt(newValue);
-          
+        //TODO See how parseInt behave
+        if (this.state && this.state.val !== parseInt(newValue)) {
+          console.log(`${name} attribute mutating`,this.state.val, newValue);
+          this.state.val = parseInt(newValue);
         }
     }
   }
 
-  get val() {
-    return this._val;
-  }
-
-  set val(newValue) {
-    console.log('val property updated', this._val, newValue);
-    this._val = newValue;
-    
-    //Reflect property value to attribute val
-    this.setAttribute('val', newValue);
-    
-    if (this.shadow) {
-      //FIXME We should not trash all node on update
-      this.shadow.querySelector('.heartButton').innerHTML = `${heartSVG}${this.val ? "<span class='heartCount'>" + this.val  + "</span>" : ""}` ;
-    }
-  }
+ 
 
   reset() {
     this.setAttribute('val', 0);
   }
   connectedCallback() {
-    this._val = parseInt(this.getAttribute('val')) || 0;
-    this.debug = true;
+    console.log("Creating an heart button");
+    class State {
+      constructor(rootElement, domDocument, val){
+        this.data = {val};
+        this.rootElement = rootElement;
+        this.domDocument = domDocument;
+      }
+      
+      get val() {
+        return this.data.val;
+      }
+    
+      set val(newValue) {
+        console.log('val property updated', this.data.val, newValue);
+        this.data.val = newValue;
+        
+        //Reflect property value to attribute val
+        if(this.rootElement){
+          this.rootElement.setAttribute('val', newValue);
+          this.rootElement.dispatchEvent(new CustomEvent("changed", {detail : {data : this.data}}))
+        }
+        
+        if (this.domDocument) {
+          //FIXME We should not trash all node on update
+          this.domDocument.querySelector('.heartButton').innerHTML = `${heartSVG}${this.data.val ? "<span class='heartCount'>" + this.data.val  + "</span>" : ""}` ;
+          //FIXME Emit an event on state update
+        }
+      }
+    }
+    
+    const _val = parseInt(this.getAttribute('val')) || 0;
     this.shadow = this.attachShadow({
       mode: 'open'
     });
+    
+    this.state = new State(this, this.shadow, _val);
 
     this.shadow.innerHTML = `
     <style>
@@ -94,9 +111,19 @@ customElements.define('heart-button', class extends HTMLElement {
     }
     
     </style>
-    <span class="heartButton">${heartSVG}${this.val ? "<span class='heartCount'>" + this.val  + "</span>" : ""} </span>`;
+    <span class="heartButton">${heartSVG}${this.state.val ? "<span class='heartCount'>" + this.val  + "</span>" : ""} </span>`;
     this.shadow.querySelector('.heartButton').addEventListener('click', () => {
       this.val++;
     })
+  }
+  
+  get val(){
+    console.log('val element getter used.')
+    return this.state.val;
+  }
+  
+  set val(val){
+    console.log('val element setter used.')
+    this.state.val = val;
   }
 });
