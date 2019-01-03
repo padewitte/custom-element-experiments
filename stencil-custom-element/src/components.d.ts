@@ -14,31 +14,19 @@ export namespace Components {
 
   interface BasicStencilCustomElement {
     /**
-    * The first name
+    * Reset the component to its default value.
     */
-    'first': string;
+    'reset': (event: UIEvent) => void;
     /**
-    * The last name
+    * Value
     */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
+    'val': number;
   }
   interface BasicStencilCustomElementAttributes extends StencilHTMLAttributes {
     /**
-    * The first name
+    * Value
     */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
+    'val'?: number;
   }
 }
 

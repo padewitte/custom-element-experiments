@@ -1,1 +1,25 @@
+:host {
+  --stenciljs-main-color: #5851ff;
+  display: block;
+}
 
+fieldset {
+  position: relative;
+}
+
+.reset {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  font-size: 75%;
+  color: white;
+  padding: 2px 5px;
+  border-radius: 5px;
+  background-color: var(--stenciljs-main-color);
+  border: solid 2px var(--stenciljs-main-color);
+}
+
+heart-button {
+  --heart-color: var(--stenciljs-main-color);
+  margin-left: 15px;
+}
