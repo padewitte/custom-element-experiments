@@ -1,5 +1,5 @@
 import Vue from 'https://unpkg.com/vue/dist/vue.esm.browser.js'
-import wrap from 'https://unpkg.com/@vue/web-component-wrapper@1.2.0/dist/vue-wc-wrapper.js'
+import wrap from 'https://unpkg.com/@vue/web-component-wrapper@1.2.0/dist/vue-wc-wrapper.js?module'
 import '../vanilla-custom-element/heart-button.mjs'
 import style from './basic-vuejs-custom-element-css.mjs'
 // https://unpkg.com/@vue/web-component-wrapper@1.2.0/dist/vue-wc-wrapper.esm.browser.js
@@ -25,7 +25,7 @@ const Component = {
   },
   watch: {
     dataval : function(oldValue, newValue){
-      this.$emit('changed', {data : {val : newValue}})
+      this.$emit('update:dataval', {data : {val : newValue}})
     }
   },
   template: `

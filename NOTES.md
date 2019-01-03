@@ -2,7 +2,7 @@ Always named vanilla module files as mjs to mark the difference for integrators 
 
 
 
-Idnetify a way to share state between parents and child elements
+Idnetify a way to share state between parents and child elements - events is the more convenient way
 
 
 ## VueJS

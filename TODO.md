@@ -14,3 +14,9 @@
 ## Knowledge
 - [ ] List the various elements best practices from frameworks and web components authors
 - - Describe a strategy if a component does not have a change event (Use observable)
+- 
+- 
+- 
+## VueJS
+
+Have a look https://vuejs.org/v2/guide/components-custom-events.html#sync-Modifier

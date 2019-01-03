@@ -1,5 +1,33 @@
 import './heart-button.mjs';
 
+const basicVanillaCustomElementCss = `
+:host {
+  --vanilla-main-color: yellow;
+  display: block;
+}
+
+fieldset {
+  position: relative;
+}
+
+.reset {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  font-size: 75%;
+  color: white;
+  padding: 2px 5px;
+  background-color: var(--vanilla-main-color);
+  border-radius: 5px;
+  border: solid 2px var(--vanilla-main-color);
+}
+
+heart-button {
+  --heart-color: var(--vanilla-main-color);
+}
+`;
+
+
 customElements.define('basic-vanilla-custom-element', class extends HTMLElement {
 
   reset() {
@@ -17,7 +45,7 @@ customElements.define('basic-vanilla-custom-element', class extends HTMLElement 
     this.val = parseInt(this.getAttribute('val')) || 0;
     this.shadow.innerHTML = `
     <style>
-      @import '/vanilla-custom-element/basic-vanilla-custom-element.css';
+      ${basicVanillaCustomElementCss}
     </style>
     <fieldset>
       I'm a Vanilla JS custom element! <heart-button val="${this.val}"></heart-button>
@@ -75,3 +103,4 @@ customElements.define('basic-vanilla-custom-element', class extends HTMLElement 
     }
   }
 });
+
