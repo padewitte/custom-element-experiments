@@ -118,6 +118,7 @@ const heartButtonCss = `
   transition-property: filter;
   transition-duration: 0.5s;
   --heart-scale : 1;
+  user-select: none;
 }
 
 .heartButton:hover {

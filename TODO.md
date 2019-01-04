@@ -20,3 +20,7 @@
 ## VueJS
 
 Have a look https://vuejs.org/v2/guide/components-custom-events.html#sync-Modifier
+
+
+## Generic
+Find a solution to share context. See how Stencil explain how to do it.
